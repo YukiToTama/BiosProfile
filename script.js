@@ -53,6 +53,14 @@ function stopBlinking() {
     prompt.style.visibility = 'visible';
 }
 
+function handleInput() {
+    if (hasEntered) return;  // 二重処理防止
+    hasEntered = true;
+
+    stopBlinking();
+    showProfile();
+}
+
 document.addEventListener('keydown', (e) => {
     if (!isMobile && (e.key === 'Enter' || e.key === 'Delete') && !hasEntered) {
         handleInput();
