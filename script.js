@@ -53,19 +53,6 @@ function stopBlinking() {
     prompt.style.visibility = 'visible';
 }
 
-function handleInput() {
-    if (hasEntered) return;  // 二重処理防止
-    hasEntered = true;
-
-    stopBlinking();
-    showProfile();
-    
-    // URLに?を追加
-    const currentUrl = new URL(window.location);
-    currentUrl.searchParams.set('yourname', '');
-    window.history.pushState({}, '', currentUrl);
-}
-
 document.addEventListener('keydown', (e) => {
     if (!isMobile && (e.key === 'Enter' || e.key === 'Delete') && !hasEntered) {
         handleInput();
